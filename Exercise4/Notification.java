@@ -3,28 +3,36 @@ package Exercise4;
 import java.util.Date;
 
 public class Notification {
-   private int notificationID;
-   private String message;
-   private Date timeStamp;
+    private static int counter = 0;
+    private int notificationID;
+    private String message;
+    private Date timeStamp;
+    private NotificationPreference notificationPreference;
 
-   // Constructor
-    public Notification(int notificationID, String message) {
-        this.notificationID = notificationID;
+    // Constructor
+    public Notification(String message, NotificationPreference notificationPreference) {
+        this.notificationID = ++counter;
         this.message = message;
         this.timeStamp = new Date();
+        this.notificationPreference = notificationPreference ;
+    }
+
+    public int getNotificationID() {
+        return notificationID;
     }
 
     // Create the message
     public String createMessage() {
-        return message;
+        return "Notification ID: " + notificationID +
+                "\nMessage: " + message +
+                "\nTimestamp: " + timeStamp.toString() +
+                "\nPreferred Channel: " + notificationPreference.getPreferredChannelType() +
+                "\nFrequency: Every " + notificationPreference.getFrequency() + " days";
     }
 
     // Send the message
     public void sendMessage() {
-        System.out.println("Sending Notification: " + message);
+        System.out.println("Sending Notification: \n" + createMessage());
     }
 
-    // Getters and Setters
-    public Date getTimeStamp() {return timeStamp;}
-    public void setTimeStamp(Date timeStamp) {this.timeStamp = timeStamp;}
 }

@@ -4,26 +4,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    // USer attributes
+    // User attributes
     private String name;
     private int age;
     private String email;
     private String phoneNumber;
     private int userID;
 
+
     // User's notification preferences and subscriptions
     private List<Subscription> subscriptions;
     private NotificationPreference notificationPreference;
 
     // Constructor to initialize the subscriptions list
-    public User() {
+    public User(int userID,String name,int age,String email,String phoneNumber) {
+        this.userID = userID; // Initialize userID
         this.subscriptions = new ArrayList<>();  // Ensure the subscriptions list is initialized
+        this.age = age;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+
+    public List<Subscription> getSubscriptions() {
+        return subscriptions;
     }
 
     // Register User for Updates by subscribing to a website
     public void registerForUpdates(Website website, int subscriptionID) {
         Subscription sub = new Subscription(website, subscriptionID);
         subscriptions.add(sub);
+    }
+
+    // Modify subscription
+    public void modifySubscription(int subscriptionID, Website newWebsite) {
+        for (Subscription sub : subscriptions) {
+            if (sub.getSubscriptionID() == subscriptionID) {
+                sub.modifySubscription(newWebsite);
+                System.out.println("User " + userID + " modified Subscription with ID " + subscriptionID);
+                return;
+            }
+        }
+        System.out.println("User " + userID + " does not have a Subscription with ID " +subscriptionID);
+    }
+
+    // Cancel subscription
+    public void cancelSubscription(int subscriptionID) {
+        for (Subscription sub : subscriptions) {
+            if (sub.getSubscriptionID() == subscriptionID) {
+                sub.cancelSubscription(subscriptionID);
+                subscriptions.remove(sub);
+                System.out.println("User " + userID + " cancelled Subscription with ID " + subscriptionID);
+                return;
+            }
+        }
+        System.out.println("User " + userID + " does not have a Subscription with ID " + subscriptionID);
     }
 
     // Set user's notification preference
@@ -34,11 +69,16 @@ public class User {
     // Display current website subscriptions
     public void manageWebsiteSubscriptions() {
         for (Subscription sub : subscriptions) {
-            System.out.println("Subscribed to: " + sub.getWebsite().getURL());
+            System.out.println("User subscribed to following website: " + sub.getWebsite().getURL() + " with the ID: " + sub.getSubscriptionID());
         }
     }
 
     // Getters and Setters
+
+    public int getUserID() {
+        return userID;
+    }
+
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 
@@ -51,6 +91,8 @@ public class User {
     public String getPhoneNumber() {return phoneNumber;}
     public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
-    public int getUserID() {return userID;}
-    public void setUserID(int userID) {this.userID = userID;}
+    // Getter for Notification Preferences
+    public NotificationPreference getNotificationPreference() {
+        return notificationPreference;
+    }
 }

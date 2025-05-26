@@ -12,7 +12,10 @@ public class NotificationPreference {
 
     // Getters and Setters
     public String getPreferredChannelType() {return preferredChannelType;}
-    public void setPreferredChannelType(String preferredChannelType) {this.preferredChannelType = preferredChannelType;
-    }
+    public void setPreferredChannelType(String preferredChannelType) {this.preferredChannelType = preferredChannelType;}
+
+    public int getFrequency() {return frequency;}
+    public void setFrequency(int frequency) {this.frequency = frequency;}
+
 
 }

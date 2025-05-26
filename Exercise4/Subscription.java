@@ -10,17 +10,24 @@ public class Subscription {
         this.subscriptionID = subscriptionID;
     }
 
+    public int getSubscriptionID(){
+        return subscriptionID;
+    }
+
+    public Website getWebsite(){
+        return website;
+    }
+
     // Modify subscription
     public void modifySubscription(Website newWebsite) {
         this.website = newWebsite;
     }
 
-    // Cancel subscription by nullifying the website
-    public void cancelSubscription() {
-        this.website = null;
+    // Cancel subscription by SubscriptionID
+    public void cancelSubscription(int subscriptionID) {
+        if (this.subscriptionID == subscriptionID) {
+            this.website = null;
+            System.out.println("Subscription with the ID " + subscriptionID + " has been cancelled");
+        }
     }
-
-    // Getter
-    public Website getWebsite() {return website;}
-
 }

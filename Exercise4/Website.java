@@ -9,9 +9,9 @@ public class Website {
 
     // Constructor
     public Website(String URL, String websiteContent) {
-    this.URL = URL;
-    this.websiteContent = websiteContent;
-    this.lastChecked = new Date();
+        this.URL = URL;
+        this.websiteContent = websiteContent;
+        this.lastChecked = new Date();
     }
 
     public String getWebsiteContent() {return websiteContent;}

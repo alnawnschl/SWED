@@ -13,8 +13,8 @@ public class UpdateSystem {
     }
 
     // Generate and return a notification
-    public Notification generateNotification(String message) {
-        Notification notification = new Notification(1, message);
+    public Notification generateNotification(String message, NotificationPreference notificationPreference) {
+        Notification notification = new Notification(message, notificationPreference);
         notification.createMessage();
         return notification;
     }
