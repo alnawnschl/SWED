@@ -1,18 +1,18 @@
 package Exercise4;
 
 public class NotificationPreference {
-    private String preferredChannelType; // Email, SMS, etc
-    private int frequency; // how often to receive notifications
+    private ChannelType preferredChannelType;
+    private int frequency;
 
     // Constructor
-    public NotificationPreference(String preferredChannelType, int frequency) {
+    public NotificationPreference(ChannelType preferredChannelType, int frequency) {
         this.preferredChannelType = preferredChannelType;
         this.frequency = frequency;
     }
 
     // Getters and Setters
-    public String getPreferredChannelType() {return preferredChannelType;}
-    public void setPreferredChannelType(String preferredChannelType) {this.preferredChannelType = preferredChannelType;}
+    public ChannelType getPreferredChannelType() {return preferredChannelType;}
+    public void setPreferredChannelType(ChannelType preferredChannelType) {this.preferredChannelType = preferredChannelType;}
 
     public int getFrequency() {return frequency;}
     public void setFrequency(int frequency) {this.frequency = frequency;}

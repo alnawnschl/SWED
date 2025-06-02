@@ -6,11 +6,11 @@ public class Main {
         User user = new User(1,"Alina",24,"alina@gmail.com","012345678");
 
         // Set user notification preference
-        user.specifyNotificationPreference("Email", 2);
+        user.specifyNotificationPreference(ChannelType.EMAIL, 2);
 
         // Create website
-        Website site1 = new Website("https://swed.com", "solutions to exercise4");
-        Website site2 = new Website("https://beispiel2.com", "neue Idee");
+        Website site1 = new Website("https://swed.com");
+        Website site2 = new Website("https://google.com");
 
         // Register user for Updates
         user.registerForUpdates(site1, 101);
